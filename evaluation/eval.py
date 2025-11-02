@@ -4,9 +4,9 @@ import json
 import os
 load_dotenv()
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
-chatModel = ChatOpenAI(model="gpt-4o")
+#chatModel = ChatOpenAI(model="gpt-4o")
 
-def evaluate_with_threshold(query, context, response):
+def evaluate_with_threshold(query, context, response,chatModel):
     EVALUATION_PROMPT = """
         You are an expert evaluator that scores AI-generated answers on three key metrics.
 
