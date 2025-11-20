@@ -46,7 +46,7 @@ Answer Correctness
 
 LLM judge compares generated vs. ground-truth answers
 
-![alt text](<Screenshot 2025-11-12 042020.png>) ![alt text](<Screenshot 2025-11-12 042141.png>)
+![alt text](<Screenshot 2025-11-12 042020.png>) ![alt text](image.png)
 
 # How to run?
 ### STEPS:
