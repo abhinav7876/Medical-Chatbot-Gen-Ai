@@ -1,10 +1,52 @@
-conda create -p venv python==3.10 -y
-conda activate venv/
-pip install -r requirements.txt
-python app.py
-
-
+🏥 Medical Chatbot using RAG, HYDE, Re-ranking & LLM-as-a-Judge Evaluation
 # Build-a-Complete-Medical-Chatbot-with-LLMs-LangChain-Pinecone-Flask-AWS
+
+A production-grade Medical Question-Answering Chatbot built using Retrieval-Augmented Generation (RAG) enhanced with HYDE (Hypothetical Document Embeddings) and Cross-Encoder Re-ranking for high-quality medical responses. The system is fully deployed on AWS EC2, optimized for reliability, scalability, and real-world usage.
+
+🚀 Key Features
+🔍 1. RAG Pipeline
+
+Converts user queries into vector embeddings
+
+Retrieves top-k relevant medical documents
+
+Generates grounded, factual responses
+
+🧠 2. HYDE — Hypothetical Document Embeddings
+
+LLM creates a hypothetical answer to enrich the query
+
+Increases semantic recall
+
+Greatly boosts accuracy on ambiguous questions
+
+🎯 3. Cross-Encoder Re-ranking
+
+Retrieved documents are re-ranked using a cross-encoder model
+
+Ensures the most relevant context goes to the LLM
+
+Reduces hallucinations significantly
+
+✔️ 4. LLM-as-a-Judge RAG Evaluation
+
+This project includes a rigorous evaluation pipeline using an LLM Judge to measure RAG performance across:
+
+📊 Evaluation Metrics
+
+Faithfulness Score
+
+Whether the answer strictly follows retrieved context
+
+Relevancy Score
+
+Whether the retrieved context matches the query
+
+Answer Correctness
+
+LLM judge compares generated vs. ground-truth answers
+
+![alt text](<Screenshot 2025-11-12 042020.png>) ![alt text](<Screenshot 2025-11-12 042141.png>)
 
 # How to run?
 ### STEPS:
@@ -52,6 +94,7 @@ python app.py
 Now,
 ```
 open up localhost:
+http://127.0.0.1:8080
 ```
 
 
