@@ -54,7 +54,7 @@ LLM judge compares generated vs. ground-truth answers
 Clone the repository
 
 ```
-git https://github.com/abhinav7876/Medical-Chatbot.git
+git clone https://github.com/abhinav7876/Medical-Chatbot-Gen-Ai.git
 ```
 ### STEP 01- Create a conda environment after opening the repository
 
