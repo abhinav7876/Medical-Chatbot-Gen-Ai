@@ -6,7 +6,7 @@ load_dotenv()
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 #chatModel = ChatOpenAI(model="gpt-4o")
 
-def evaluate_with_threshold(query, context, response,chatModel):
+def evaluate_with_threshold(query, context, response,chatModel,session_id):
     EVALUATION_PROMPT = """
         You are an expert evaluator that scores AI-generated answers on three key metrics.
 
@@ -32,7 +32,6 @@ def evaluate_with_threshold(query, context, response,chatModel):
     context=context,
     answer=response
 )
-    
     eval_result = chatModel.invoke(eval_prompt).content
     try:
         cleaned = eval_result.replace("```json", "").replace("```", "").strip()
@@ -46,11 +45,19 @@ def evaluate_with_threshold(query, context, response,chatModel):
 
     if low_scores:
         print(f"Low metrics detected: {low_scores}")
-        refined_query = (
-            f"{query}\nPlease refine your answer using only verified, factual information. "
-            f"Ensure faithfulness and relevance. Be concise."
-        )
-        refined_response = chatModel.invoke(refined_query).content
+        print("query:",query)
+        refined_query = ( f"{query}\nPlease refine your answer using only verified, factual information. "
+                          f"Ensure faithfulness and relevance. Be concise." 
+                          f" Keep medical terminology precise."
+                          f"""Make sure You are a medical assistant.
+                                If the question is not related to medicine or health,
+                                politely refuse to answer.
+                                """
+                          f"If data is insufficient, respond with 'Insufficient data to provide an answer. and say I dont know.' "
+                          )
+        print("Refining response with query:", refined_query)
+        refined_response = chatModel.invoke(refined_query,
+                    config={"configurable": {"session_id": session_id}}).content
         return refined_response, scores
     else:
         return response,scores
