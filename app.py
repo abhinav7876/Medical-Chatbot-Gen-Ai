@@ -30,7 +30,7 @@ llm = ChatOpenAI(model="gpt-4o-mini")
 
 
 embedding = download_embeddings()
-index_name="medical-chatbot"
+index_name="medical-chatbot-app"
 docsearch = PineconeVectorStore.from_existing_index(
     index_name=index_name,
     embedding=embedding
